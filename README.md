@@ -55,7 +55,27 @@ without turning on the 2634B outputs.
 ### Windows
 
 Copy this project folder to a writable location, such as your Documents folder.
-Install 64-bit Python 3.13, then open PowerShell in this folder and run:
+Install 64-bit Python 3.13, then open PowerShell in this folder. To install the
+packages into that Python installation without a project virtual environment,
+run:
+
+```powershell
+py -3.13 -m pip install --upgrade pip
+py -3.13 -m pip install -r requirements.txt
+py -3.13 -m unittest discover -v
+py -3.13 gui.py
+```
+
+Use `py -3.13 gui.py` to start the GUI later. Keep `py -3.13` in the install and
+run commands so they use the same interpreter. `py -3.13 -m pip show PyVISA`
+shows the installed package location. A Python installation shared with other
+programs also shares its packages, so changing their versions can affect those
+programs. If pip says it is "Defaulting to user installation," the packages go
+to your Windows user package directory rather than Python's `Lib\site-packages`;
+the same `py -3.13` commands can still use them.
+
+Alternatively, to keep this project's packages separate, create a virtual
+environment in the project folder:
 
 ```powershell
 py -3.13 -m venv .venv
@@ -66,8 +86,8 @@ py -3.13 -m venv .venv
 ```
 
 Create the `.venv` on the Windows PC rather than copying a virtual environment
-from another computer. Later, only the last command is needed to start the
-GUI. The `.command` launcher below is for macOS.
+from another computer. If you choose this option, use the last command to start
+the GUI later. The `.command` launcher below is for macOS.
 
 ### macOS
 
